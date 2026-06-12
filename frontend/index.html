@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Scraper</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Job Scraper</h1>
+      <p>Search jobs, export to Excel with date &amp; time, or schedule automatic runs</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="scrape">Scrape Now</button>
+      <button class="tab" data-tab="files">Saved Files</button>
+      <button class="tab" data-tab="schedule">Auto Schedule</button>
+    </nav>
+
+    <!-- Scrape tab -->
+    <section id="tab-scrape" class="panel active">
+      <form id="scrape-form" class="card">
+        <div class="grid">
+          <label>
+            Skills <span class="hint">space-separated</span>
+            <input type="text" name="skills" required placeholder="Python Django REST API" />
+          </label>
+          <label>
+            Location
+            <input type="text" name="location" value="Remote" />
+          </label>
+          <label>
+            Max results per portal
+            <input type="number" name="max_results" value="50" min="5" max="200" />
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="remote_only" />
+            Remote jobs only
+          </label>
+        </div>
+
+        <fieldset>
+          <legend>Portals</legend>
+          <div id="portal-checkboxes" class="checkbox-grid"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Export formats</legend>
+          <div class="checkbox-grid">
+            <label class="checkbox"><input type="checkbox" name="fmt_excel" checked /> Excel (.xlsx)</label>
+            <label class="checkbox"><input type="checkbox" name="fmt_json" checked /> JSON</label>
+            <label class="checkbox"><input type="checkbox" name="fmt_csv" checked /> CSV</label>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn primary" id="scrape-btn">Start Scrape</button>
+      </form>
+
+      <div id="scrape-status" class="card hidden">
+        <h3>Scrape Progress</h3>
+        <div class="status-bar"><div id="status-fill"></div></div>
+        <p id="status-text">Starting...</p>
+        <div id="portal-summary"></div>
+        <div id="saved-files" class="file-links"></div>
+      </div>
+
+      <div id="jobs-table-wrap" class="card hidden">
+        <h3>Results <span id="job-count"></span></h3>
+        <div class="table-scroll">
+          <table id="jobs-table">
+            <thead>
+              <tr>
+                <th>Match</th>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Portal</th>
+                <th>Scraped At</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Files tab -->
+    <section id="tab-files" class="panel">
+      <div class="card">
+        <div class="row-between">
+          <h3>Exported Files</h3>
+          <button class="btn" id="refresh-files">Refresh</button>
+        </div>
+        <div id="files-list" class="files-list"></div>
+      </div>
+    </section>
+
+    <!-- Schedule tab -->
+    <section id="tab-schedule" class="panel">
+      <form id="schedule-form" class="card">
+        <h3>Schedule Daily Auto-Scrape</h3>
+        <p class="hint">Jobs will be scraped automatically every day at the time you choose. Results are saved to Excel with date and time.</p>
+        <div class="grid">
+          <label>
+            Schedule name
+            <input type="text" name="name" value="Morning job search" />
+          </label>
+          <label>
+            Run time <span class="hint">24h format</span>
+            <input type="time" name="run_time" value="09:00" required />
+          </label>
+          <label>
+            Skills
+            <input type="text" name="skills" required placeholder="React TypeScript" />
+          </label>
+          <label>
+            Location
+            <input type="text" name="location" value="Remote" />
+          </label>
+        </div>
+        <button type="submit" class="btn primary">Add Schedule</button>
+      </form>
+
+      <div class="card">
+        <h3>Active Schedules</h3>
+        <div id="schedules-list"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

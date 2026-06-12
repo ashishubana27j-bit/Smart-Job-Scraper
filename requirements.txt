@@ -1,0 +1,32 @@
+# requirements.txt — Job Scraper dependencies
+# Install with: pip install -r requirements.txt
+
+# HTTP
+aiohttp==3.9.5
+aiohttp[speedups]
+curl_cffi>=0.7.0
+
+# Browser fetch (NaukriGulf SPA)
+playwright>=1.44.0
+
+# HTML Parsing
+beautifulsoup4==4.12.3
+lxml>=6.0.0         # Fast HTML/XML parser (used by BeautifulSoup)
+
+# Utilities
+python-dotenv==1.0.1  # Load .env files
+
+# API & Web
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9
+
+# Excel export
+openpyxl==3.1.2
+
+# Scheduled scraping
+apscheduler==3.10.4
+
+# Optional: for Playwright-based scraping (JS-rendered pages)
+# playwright==1.44.0
+# Run: playwright install chromium

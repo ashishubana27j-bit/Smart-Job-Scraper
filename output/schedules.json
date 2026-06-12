@@ -1,0 +1,20 @@
+{
+  "c95e8ca7": {
+    "name": "Morning job search",
+    "skills": "unity",
+    "location": "Remote",
+    "remote_only": false,
+    "job_type": "full-time",
+    "experience_level": "",
+    "min_salary": null,
+    "max_salary": null,
+    "portals": null,
+    "max_results": 50,
+    "run_time": "04:10",
+    "enabled": true,
+    "last_run": "2026-06-12T04:14:21.061739",
+    "next_run": "2026-06-12T04:10:00+04:00",
+    "last_job_count": 66,
+    "last_file": "jobs_20260612_041420.xlsx"
+  }
+}
