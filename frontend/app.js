@@ -27,7 +27,7 @@ async function loadPortals() {
   const container = document.getElementById("portal-checkboxes");
   const defaultOn = new Set([
     "remotive", "remoteok", "arbeitnow", "workingnomads", "weworkremotely",
-    "jobspresso", "greenhouse", "lever",
+    "jobspresso", "greenhouse", "lever", "indeed" , "linkedin",
   ]);
 
   let html = "";
